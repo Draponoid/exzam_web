@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная — Интернет-магазин (Вариант 2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        /* Минимальные стили, чтобы всё выглядело как в макете */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1; /* Прижимаем футер к низу */
+        }
+        .footer {
+            background-color: #343a40; /* Тёмный футер как принято */
+            color: #fff;
+            padding: 20px 0;
+        }
+        .card-img-top {
+            height: 200px; /* Чтобы картинки не скакали по высоте */
+            object-fit: contain;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-3 position-absolute top-0 start-50 translate-middle-x" style="z-index: 1050;" id="alerts-container">
+        </div>
+
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ShopProject</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <form class="d-flex mx-auto col-12 col-lg-6 my-2 my-lg-0">
+                    <input class="form-control me-2" type="search" placeholder="Поиск товаров..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Найти</button>
+                </form>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Каталог</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="bi bi-cart"></i> Корзина
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">
+                            <i class="bi bi-person-circle"></i> ЛК
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="row">
+            
+            <aside class="col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-header">Фильтры</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Категория</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cat1" name="category">
+                                    <label class="form-check-label" for="cat1">Спорт и отдых</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cat2" name="category">
+                                    <label class="form-check-label" for="cat2">Электроника</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Цена, ₽</label>
+                                <div class="d-flex gap-2">
+                                    <input type="number" class="form-control" placeholder="От">
+                                    <input type="number" class="form-control" placeholder="До">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="discount">
+                                <label class="form-check-label" for="discount">Товары со скидкой</label>
+                            </div>
+
+                            <button type="button" class="btn btn-primary w-100">Применить</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="col-lg-9">
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h4">Каталог товаров</h2>
+                    <div class="col-auto">
+                        <select class="form-select" aria-label="Сортировка">
+                            <option selected disabled>Сортировка</option>
+                            <option value="rating_asc">По возрастанию рейтинга</option>
+                            <option value="rating_desc">По убыванию рейтинга</option>
+                            <option value="price_asc">Сначала дешевые</option>
+                            <option value="price_desc">Сначала дорогие</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+                    
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Товар">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-truncate" title="Полное название товара">Гантели разборные</h5>
+                                <div class="mb-2 text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="text-secondary small ms-1">3.5</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <p class="card-text fw-bold mb-2">1 500 ₽</p>
+                                    <button class="btn btn-primary w-100">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Товар">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-truncate">Фитнес-браслет</h5>
+                                <div class="mb-2 text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="text-secondary small ms-1">5.0</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <p class="card-text mb-2">
+                                        <span class="text-danger fw-bold me-2">2 500 ₽</span>
+                                        <span class="text-decoration-line-through text-muted small">3 000 ₽</span>
+                                    </p>
+                                    <button class="btn btn-primary w-100">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Товар">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-truncate">Коврик для йоги</h5>
+                                <div class="mb-2 text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="text-secondary small ms-1">3.0</span>
+                                </div>
+                                <div class="mt-auto">
+                                    <p class="card-text fw-bold mb-2">800 ₽</p>
+                                    <button class="btn btn-primary w-100">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Назад</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Вперед</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>ShopProject</h5>
+                    <p class="small text-muted mb-0">Учебный проект © 2024</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Контакты: 8 (800) 555-35-35</p>
+                    <p class="mb-0">email: student@mospolytech.ru</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
